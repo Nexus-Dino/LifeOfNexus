@@ -7,7 +7,7 @@ modId="lifeofnexus"
 version="${file.jarVersion}" 
 displayName="LifeOfNexus" 
 logoFile="lifeofnexus.png" 
-credits="Thanks for this example mod goes to Akhil" 
+credits="Thanks for this mod goes to Akhil" 
 authors="NexusDino" 
 description='''
     The life of me in minecraft. Just insane mod

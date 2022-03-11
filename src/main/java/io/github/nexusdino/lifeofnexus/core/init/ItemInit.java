@@ -12,6 +12,15 @@ public final class ItemInit {
 
 	public static final RegistryObject<Item> SCYTHONITE_INGOT = ITEMS.register("scythonite_ingot",
 			() -> new Item(new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_MATERIALS).fireResistant()));
+	
+	public static final RegistryObject<Item> RAW_SCYTHONITE = ITEMS.register("raw_scythonite",
+			() -> new Item(new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_MATERIALS).fireResistant()));
+	
+	public static final RegistryObject<Item> OSMIUM_INGOT = ITEMS.register("osmium_ingot",
+			() -> new Item(new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_MATERIALS).fireResistant()));
+	
+	public static final RegistryObject<Item> RAW_OSMIUM = ITEMS.register("raw_osmium",
+			() -> new Item(new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_MATERIALS).fireResistant()));
 
 	private ItemInit() {
 	}
