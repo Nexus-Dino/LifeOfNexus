@@ -10,7 +10,9 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ItemBasedSteering;
 import net.minecraft.world.entity.ItemSteerable;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Saddleable;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -31,21 +33,29 @@ public class Reindeer extends Animal implements ItemSteerable, Saddleable, IAnim
 			EntityDataSerializers.BOOLEAN);
 	private final ItemBasedSteering steering = new ItemBasedSteering(getEntityData(), DATA_BOOST_TIME, DATA_SADDLE_ID);
 	private final AnimationFactory factory = new AnimationFactory(this);
-	private final AnimationController<Reindeer> WALKING = new AnimationController<Reindeer>(this, "walking_controller", 0.1f, event -> PlayState.CONTINUE);
+
+	private final AnimationController<Reindeer> walkingController = new AnimationController<>(this,
+			"walking_controller", 0.1f, event -> PlayState.CONTINUE);
 
 	public Reindeer(EntityType<? extends Animal> p_27557_, Level p_27558_) {
 		super(p_27557_, p_27558_);
 	}
-	
-	// Not adding this might running into risk of non-equivalent instances of your subclass being seen as equal
+
+	// Not adding this might running into risk of non-equivalent instances of your
+	// subclass being seen as equal
 	@Override
 	public boolean equals(Object pObject) {
 		return pObject == this;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();
+	}
+
+	public static AttributeSupplier.Builder createAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 53.0D).add(Attributes.JUMP_STRENGTH)
+				.add(Attributes.MOVEMENT_SPEED, 0.1D);
 	}
 
 	@Override
@@ -57,17 +67,18 @@ public class Reindeer extends Animal implements ItemSteerable, Saddleable, IAnim
 	public void equipSaddle(SoundSource category) {
 		this.steering.setSaddle(true);
 		if (category != null)
-			this.level.playSound((Player) null, this, SoundEvents.PIG_SADDLE, category, 0.5F, 1.0F);
+			this.level.playSound((Player) null, this, SoundEvents.STRIDER_SADDLE, category, 0.5F, 1.0F);
 
 	}
-	
+
 	@Override
 	public AnimationFactory getFactory() {
 		return factory;
 	}
-	
+
 	@Override
 	public void registerControllers(AnimationData data) {
+		data.addAnimationController(walkingController);
 	}
 
 	@Override
@@ -77,7 +88,7 @@ public class Reindeer extends Animal implements ItemSteerable, Saddleable, IAnim
 
 	@Override
 	public float getSteeringSpeed() {
-		return 0;
+		return (float)this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (this.isSuffocating() ? 0.23F : 0.55F);
 	}
 
 	@Override
