@@ -11,20 +11,41 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ItemBasedSteering;
 import net.minecraft.world.entity.ItemSteerable;
 import net.minecraft.world.entity.Saddleable;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Reindeer extends Animal implements ItemSteerable, Saddleable {
+public class Reindeer extends Animal implements ItemSteerable, Saddleable, IAnimatable {
 	private static final EntityDataAccessor<Integer> DATA_BOOST_TIME = SynchedEntityData.defineId(Reindeer.class,
 			EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> DATA_SADDLE_ID = SynchedEntityData.defineId(Reindeer.class,
 			EntityDataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Boolean> DATA_SUFFOCATING = SynchedEntityData.defineId(Reindeer.class,
+			EntityDataSerializers.BOOLEAN);
 	private final ItemBasedSteering steering = new ItemBasedSteering(getEntityData(), DATA_BOOST_TIME, DATA_SADDLE_ID);
+	private final AnimationFactory factory = new AnimationFactory(this);
+	private final AnimationController<Reindeer> WALKING = new AnimationController<Reindeer>(this, "walking_controller", 0.1f, event -> PlayState.CONTINUE);
 
-	protected Reindeer(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+	public Reindeer(EntityType<? extends Animal> p_27557_, Level p_27558_) {
 		super(p_27557_, p_27558_);
+	}
+	
+	// Not adding this might running into risk of non-equivalent instances of your subclass being seen as equal
+	@Override
+	public boolean equals(Object pObject) {
+		return pObject == this;
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 
 	@Override
@@ -38,6 +59,15 @@ public class Reindeer extends Animal implements ItemSteerable, Saddleable {
 		if (category != null)
 			this.level.playSound((Player) null, this, SoundEvents.PIG_SADDLE, category, 0.5F, 1.0F);
 
+	}
+	
+	@Override
+	public AnimationFactory getFactory() {
+		return factory;
+	}
+	
+	@Override
+	public void registerControllers(AnimationData data) {
 	}
 
 	@Override
@@ -65,8 +95,18 @@ public class Reindeer extends Animal implements ItemSteerable, Saddleable {
 		super.travel(pTravelVec);
 	}
 
+	public boolean isSuffocating() {
+		return this.getVehicle() instanceof Reindeer reindeer ? reindeer.isSuffocating()
+				: this.entityData.get(DATA_SUFFOCATING);
+	}
+
+	public float getMoveSpeed() {
+		return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (this.isSuffocating() ? 0.66F : 1.0F);
+	}
+
 	@Override
 	public void travel(Vec3 pTravelVector) {
-		super.travel(pTravelVector);
+		this.setSpeed(this.getMoveSpeed());
+		this.travel(this, this.steering, pTravelVector);
 	}
 }
