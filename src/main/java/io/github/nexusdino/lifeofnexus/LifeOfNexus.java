@@ -13,6 +13,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(LifeOfNexus.MOD_ID)
 public class LifeOfNexus {
@@ -39,6 +40,8 @@ public class LifeOfNexus {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		bus.addListener(this::setup);
+		
+		GeckoLib.initialize();
 		
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);

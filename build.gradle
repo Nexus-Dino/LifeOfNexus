@@ -54,7 +54,6 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'lifeofnexus'
 
             mods {
@@ -101,7 +100,17 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+	maven {
+		name = "Progwm Maven"
+		url = "https://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
+	maven { 
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' 
+	}
 }
 
 dependencies {
@@ -109,9 +118,10 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.0.12'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
 
+	implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.12')
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

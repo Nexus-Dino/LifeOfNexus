@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]] 
 modId="lifeofnexus" 
-version="${file.jarVersion}" 
+version="1.0.0-1.18.2" 
 displayName="LifeOfNexus" 
 logoFile="lifeofnexus.png" 
 credits="Thanks for this mod goes to Akhil" 

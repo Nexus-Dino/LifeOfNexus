@@ -38,17 +38,17 @@ public final class BlockInit {
 	public static final RegistryObject<Block> DEEPSLATE_OSMIUM_ORE = registerBlock("deepslate_osmium_ore",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_GOLD_ORE)));
 
+	private BlockInit() {
+	}
+	
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 		var obj = BLOCKS.register(name, block);
 		registerBlockItem(name, obj);
 		return obj;
 	}
 
-	private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> obj) {
-		ItemInit.ITEMS.register(name,
+	private static <T extends Block> RegistryObject<BlockItem> registerBlockItem(String name, RegistryObject<T> obj) {
+		return ItemInit.ITEMS.register(name,
 				() -> new BlockItem(obj.get(), new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_BLOCKS)));
-	}
-
-	private BlockInit() {
 	}
 }

@@ -16,15 +16,26 @@ public class ModItemModelProvider extends ItemModelProvider {
 	protected void registerModels() {
 		var defaultParent = "item/generated";
 
-		withExistingParent("scythonite_ingot", defaultParent);
-		withExistingParent("raw_scythonite", defaultParent);
+		buildItem("scythonite_ingot", defaultParent);
+		buildItem("raw_scythonite", defaultParent);
+		buildItem("osmium_ingot", defaultParent);
+		buildItem("raw_osmium", defaultParent);
 
 		buildBlockItem("scythonite_ore");
 		buildBlockItem("deepslate_scythonite_ore");
 		buildBlockItem("scythonite_block");
+		
+		buildBlockItem("osmium_ore");
+		buildBlockItem("deepslate_osmium_ore");
+		buildBlockItem("osmium_block");
+		buildBlockItem("raw_osmium_block");
 	}
 
 	private ItemModelBuilder buildBlockItem(String name) {
 		return withExistingParent(name, modLoc(BLOCK_FOLDER + "/" + name));
+	}
+	
+	private ItemModelBuilder buildItem(String name, String parent) {
+		return getBuilder(name).parent(getExistingFile(mcLoc(parent))).texture("layer0", modLoc("item/" + name));
 	}
 }

@@ -20,13 +20,14 @@ public final class ModDataGenerators {
 		var generator = event.getGenerator();
 		var exFileHelper = event.getExistingFileHelper();
 
+		generator.addProvider(new ModBlockTagProvider(generator, exFileHelper));
+
 		if (event.includeClient()) {
 			generator.addProvider(new ModLangProvider(generator));
 			generator.addProvider(new ModBlockStateProvider(generator, exFileHelper));
 			generator.addProvider(new ModItemModelProvider(generator, exFileHelper));
 		} else if (event.includeServer()) {
 			generator.addProvider(new ModRecipeProvider(generator));
-			generator.addProvider(new ModBlockTagProvider(generator, exFileHelper));
 		}
 	}
 }

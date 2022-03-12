@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "lifeofnexus:osmium_ore",
+    "lifeofnexus:deepslate_osmium_ore",
+    "lifeofnexus:scythonite_ore",
+    "lifeofnexus:deepslate_scythonite_ore",
+    "lifeofnexus:scythonite_block",
+    "lifeofnexus:osmium_block"
+  ]
+}
