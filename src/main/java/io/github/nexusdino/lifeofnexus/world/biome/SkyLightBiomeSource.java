@@ -26,7 +26,7 @@ public class SkyLightBiomeSource extends BiomeSource {
 	public SkyLightBiomeSource(Registry<Biome> registry) {
 		super(getStartBiomes(registry));
 		this.biomeRegistry = registry;
-		this.biome = registry.getHolderOrThrow(Biomes.PLAINS);
+		this.biome = registry.getHolderOrThrow(Biomes.JAGGED_PEAKS);
 	}
 
 	private static List<Holder<Biome>> getStartBiomes(Registry<Biome> registry) {

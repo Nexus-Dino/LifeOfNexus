@@ -1,21 +1,20 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
+        //maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
+        //classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 
 version = '1.0.0-1.18.2'
@@ -27,7 +26,8 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
 
-    mappings channel: 'parchment', version: '1.18.1-2022.03.06-1.18.2'
+    mappings channel: 'official', version: '1.18.2'
+    //mappings channel: 'parchment', version: '1.18.1-2022.03.06-1.18.2'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') 
 
@@ -100,21 +100,6 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-curseforge {
-  apiKey = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-  project {
-    id = '12345'
-    changelog = 'Some changes'
-    releaseType = 'alpha'
-    addGameVersion '1.18.2'
-    mainArtifavt jar
-
-    mainArtifact(jar) {
-      displayName = "LifeOfNexus version: $project.version"
-    }
-  }
-}
-
 repositories {
 	maven {
 		name = "Progwm Maven"
@@ -127,20 +112,26 @@ repositories {
 	maven { 
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' 
 	}
+	
+	maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.12'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.0.13'
 
-    // Real mod deobf dependency examples - these get remapped to your current mappings
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
 
 	implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.12')
+    runtimeOnly fg.deobf("curse.maven:configuredforjei-457570:3640884")
 }
 
-// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
