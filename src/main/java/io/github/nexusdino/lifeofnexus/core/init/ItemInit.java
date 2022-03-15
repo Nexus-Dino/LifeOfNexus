@@ -25,27 +25,27 @@ public final class ItemInit {
 
 	public static final RegistryObject<Item> SCYTHONITE_PICKAXE = ITEMS.register("scythonite_pickaxe",
 			() -> new PickaxeItem(TierInit.SCYTHONITE, 6, 3f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 	
 	public static final RegistryObject<Item> SCYTHONITE_SWORD = ITEMS.register("scythonite_sword",
 			() -> new SwordItem(TierInit.SCYTHONITE, 13, 5f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 	
 	public static final RegistryObject<Item> SCYTHONITE_AXE = ITEMS.register("scythonite_axe",
 			() -> new AxeItem(TierInit.SCYTHONITE, 8, 4f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 	
 	public static final RegistryObject<Item> SCYTHONITE_SHOVEL = ITEMS.register("scythonite_shovel",
 			() -> new ShovelItem(TierInit.SCYTHONITE, 4, 9f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 	
 	public static final RegistryObject<Item> SCYTHONITE_HOE = ITEMS.register("scythonite_hoe",
 			() -> new HoeItem(TierInit.SCYTHONITE, 6, 3f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 	
 	public static final RegistryObject<Item> OSMIUM_PICKAXE = ITEMS.register("osmium_pickaxe",
 			() -> new PickaxeItem(TierInit.OSMIUM, 6, 3f,
-					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOL).fireResistant()));
+					new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_TOOLS).fireResistant()));
 
 	public static final RegistryObject<Item> SCYTHONITE_HELMET = ITEMS.register("scythonite_helmet",
 			() -> new ArmorItem(ArmorInit.SCYTHONITE, EquipmentSlot.HEAD,

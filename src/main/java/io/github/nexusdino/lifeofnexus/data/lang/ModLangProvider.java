@@ -30,6 +30,6 @@ public class ModLangProvider extends LanguageProvider {
 		add(BlockInit.RAW_OSMIUM_BLOCK.get(), "Raw Osmium Block");
 		add(BlockInit.DEEPSLATE_OSMIUM_ORE.get(), "Deepslate Osmium Ore");
 		
-		add(BlockInit.OVEN.get(), "Oven");
+		add(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_MATERIALS.toString(), "LON Materials!");
 	}
 }

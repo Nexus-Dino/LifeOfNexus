@@ -3,14 +3,11 @@ package io.github.nexusdino.lifeofnexus.core.init;
 import java.util.function.Supplier;
 
 import io.github.nexusdino.lifeofnexus.LifeOfNexus;
-import io.github.nexusdino.lifeofnexus.common.block.OvenBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -41,9 +38,9 @@ public final class BlockInit {
 	public static final RegistryObject<Block> DEEPSLATE_OSMIUM_ORE = registerBlock("deepslate_osmium_ore",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_GOLD_ORE)));
 
-	public static final RegistryObject<Block> OVEN = registerBlock("oven",
-			() -> new OvenBlock(BlockBehaviour.Properties.of(Material.METAL).strength(15f)
-					.lightLevel(state -> OvenBlock.LIT != null ? 35 : 0).sound(SoundType.METAL)));
+//	public static final RegistryObject<Block> OVEN = registerBlock("oven",
+//			() -> new OvenBlock(BlockBehaviour.Properties.of(Material.METAL).strength(15f)
+//					.lightLevel(state -> OvenBlock.LIT != null ? 35 : 0).sound(SoundType.METAL)));
 
 	private BlockInit() {
 	}

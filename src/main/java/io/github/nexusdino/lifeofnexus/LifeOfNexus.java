@@ -26,9 +26,9 @@ public class LifeOfNexus {
 		bus.addListener(this::setup);
 
 		GeckoLib.initialize();
-
-		ItemInit.ITEMS.register(bus);
+		
 		BlockInit.BLOCKS.register(bus);
+		ItemInit.ITEMS.register(bus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -39,7 +39,7 @@ public class LifeOfNexus {
 	}
 	
 	public static class CreativeTabs {
-		public static final CreativeModeTab TAB_LON_ADDON_MATERIALS = new CreativeModeTab(MOD_ID) {
+		public static final CreativeModeTab TAB_LON_ADDON_MATERIALS = new CreativeModeTab(MOD_ID + ".materials") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -47,7 +47,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_ARMOR = new CreativeModeTab(MOD_ID) {
+		public static final CreativeModeTab TAB_LON_ADDON_ARMOR = new CreativeModeTab(MOD_ID + ".armor") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -55,7 +55,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_TOOL = new CreativeModeTab(MOD_ID) {
+		public static final CreativeModeTab TAB_LON_ADDON_TOOLS = new CreativeModeTab(MOD_ID + ".tools") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -63,7 +63,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_COMBAT = new CreativeModeTab(MOD_ID) {
+		public static final CreativeModeTab TAB_LON_ADDON_COMBAT = new CreativeModeTab(MOD_ID + ".combat") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -71,7 +71,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_BLOCKS = new CreativeModeTab(MOD_ID) {
+		public static final CreativeModeTab TAB_LON_ADDON_BLOCKS = new CreativeModeTab(MOD_ID + ".blocks") {
 
 			@Override
 			public ItemStack makeIcon() {

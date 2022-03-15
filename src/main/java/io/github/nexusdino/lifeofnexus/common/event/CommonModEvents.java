@@ -3,7 +3,6 @@ package io.github.nexusdino.lifeofnexus.common.event;
 import io.github.nexusdino.lifeofnexus.LifeOfNexus;
 import io.github.nexusdino.lifeofnexus.data.blockstate.ModBlockStateProvider;
 import io.github.nexusdino.lifeofnexus.data.lang.ModLangProvider;
-import io.github.nexusdino.lifeofnexus.data.loot.ModLootTableProvider;
 import io.github.nexusdino.lifeofnexus.data.model.ModItemModelProvider;
 import io.github.nexusdino.lifeofnexus.data.recipe.ModRecipeProvider;
 import io.github.nexusdino.lifeofnexus.data.tag.ModBlockTagsProvider;
@@ -19,14 +18,10 @@ public class CommonModEvents {
 		var generator = event.getGenerator();
 		var exFileHelper = event.getExistingFileHelper();
 
-		if (event.includeServer()) {
-			generator.addProvider(new ModLootTableProvider(generator));
-			generator.addProvider(new ModRecipeProvider(generator));
-			generator.addProvider(new ModBlockTagsProvider(generator, exFileHelper));
-		} else if (event.includeClient()) {
-			generator.addProvider(new ModLangProvider(generator));
-			generator.addProvider(new ModItemModelProvider(generator, exFileHelper));
-			generator.addProvider(new ModBlockStateProvider(generator, exFileHelper));
-		}
+		generator.addProvider(new ModRecipeProvider(generator));
+		generator.addProvider(new ModBlockTagsProvider(generator, exFileHelper));
+		generator.addProvider(new ModLangProvider(generator));
+		generator.addProvider(new ModBlockStateProvider(generator, exFileHelper));
+		generator.addProvider(new ModItemModelProvider(generator, exFileHelper));
 	}
 }
