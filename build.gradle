@@ -129,7 +129,6 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
 
 	implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.12')
-    runtimeOnly fg.deobf("curse.maven:configuredforjei-457570:3640884")
 }
 
 jar {

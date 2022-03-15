@@ -56,6 +56,6 @@ public final class BlockInit {
 
 	private static <T extends Block> RegistryObject<BlockItem> registerBlockItem(String name, RegistryObject<T> obj) {
 		return ItemInit.ITEMS.register(name,
-				() -> new BlockItem(obj.get(), new Item.Properties().tab(LifeOfNexus.TAB_LON_ADDON_BLOCKS)));
+				() -> new BlockItem(obj.get(), new Item.Properties().tab(LifeOfNexus.CreativeTabs.TAB_LON_ADDON_BLOCKS)));
 	}
 }
