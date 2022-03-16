@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:raw_osmium"
+      "minecraft:osmium_ingot_from_block"
     ]
   },
   "criteria": {
-    "has_raw_osmium_block": {
+    "has_osmium_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "lifeofnexus:raw_osmium_block"
+              "lifeofnexus:osmium_block"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:raw_osmium"
+        "recipe": "minecraft:osmium_ingot_from_block"
       }
     }
   },
   "requirements": [
     [
-      "has_raw_osmium_block",
+      "has_osmium_block",
       "has_the_recipe"
     ]
   ]

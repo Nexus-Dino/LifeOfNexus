@@ -11,5 +11,10 @@
   "item.lifeofnexus.scythonite_chestplate": "Scythonite Chestplate",
   "item.lifeofnexus.scythonite_helmet": "Scythonite Helmet",
   "item.lifeofnexus.scythonite_ingot": "Scythonite Ingot",
-  "item.lifeofnexus.scythonite_leggings": "Scythonite Leggings"
+  "item.lifeofnexus.scythonite_leggings": "Scythonite Leggings",
+  "item_group.lifeofnexus.armor": "LON Armor!",
+  "item_group.lifeofnexus.blocks": "LON Blocks!",
+  "item_group.lifeofnexus.combat": "LON Combat!",
+  "item_group.lifeofnexus.materials": "LON Materials!",
+  "item_group.lifeofnexus.tools": "LON Tools!"
 }

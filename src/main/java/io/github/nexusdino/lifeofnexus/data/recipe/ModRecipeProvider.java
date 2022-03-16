@@ -7,32 +7,22 @@ import io.github.nexusdino.lifeofnexus.core.init.ItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.world.item.Items;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+public class ModRecipeProvider extends RecipeProvider {
 
 	public ModRecipeProvider(DataGenerator p_125973_) {
 		super(p_125973_);
 	}
 
-	private static Ingredient makeIngredientOutOf(ItemLike... itemLikes) {
-		return Ingredient.of(itemLikes);
-	}
-
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> p_176532_) {
-		/* Access Transformed */
-		nineBlockStorageRecipes(p_176532_, ItemInit.RAW_OSMIUM.get(), BlockInit.RAW_OSMIUM_BLOCK.get());
-		nineBlockStorageRecipes(p_176532_, ItemInit.OSMIUM_INGOT.get(), BlockInit.OSMIUM_BLOCK.get());
-
-		ShapedRecipeBuilder.shaped(ItemInit.SCYTHONITE_PICKAXE.get()).define('M',
-				makeIngredientOutOf(ItemInit.SCYTHONITE_INGOT.get())).define('S', makeIngredientOutOf(Items.STICK))
-			.pattern("MMM")
-			.pattern(" S ")
-			.pattern(" S ").unlockedBy("has_item", has(ItemInit.SCYTHONITE_INGOT.get())).save(p_176532_);
+		SimpleCookingRecipeBuilder
+				.smelting(Ingredient.of(ItemInit.RAW_OSMIUM.get()), ItemInit.OSMIUM_INGOT.get(), 5f, 200)
+				.unlockedBy("has_item", has(ItemInit.RAW_OSMIUM.get())).save(p_176532_);
+		
+		nineBlockStorageRecipesRecipesWithCustomUnpacking(p_176532_, ItemInit.OSMIUM_INGOT.get(),
+				BlockInit.OSMIUM_BLOCK.get(), "osmium_ingot_from_block", "osmium_ingot");
 	}
 }

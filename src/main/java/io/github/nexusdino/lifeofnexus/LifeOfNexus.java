@@ -39,7 +39,9 @@ public class LifeOfNexus {
 	}
 	
 	public static class CreativeTabs {
-		public static final CreativeModeTab TAB_LON_ADDON_MATERIALS = new CreativeModeTab(MOD_ID + ".materials") {
+		private static final String ITEM_GROUP_PREFIX = "item_group.";
+
+		public static final CreativeModeTab TAB_LON_ADDON_MATERIALS = new CreativeModeTab(ITEM_GROUP_PREFIX + MOD_ID + ".materials") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -47,7 +49,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_ARMOR = new CreativeModeTab(MOD_ID + ".armor") {
+		public static final CreativeModeTab TAB_LON_ADDON_ARMOR = new CreativeModeTab(ITEM_GROUP_PREFIX + MOD_ID + ".armor") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -55,7 +57,7 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_TOOLS = new CreativeModeTab(MOD_ID + ".tools") {
+		public static final CreativeModeTab TAB_LON_ADDON_TOOLS = new CreativeModeTab(ITEM_GROUP_PREFIX + MOD_ID + ".tools") {
 
 			@Override
 			public ItemStack makeIcon() {
@@ -63,15 +65,15 @@ public class LifeOfNexus {
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_COMBAT = new CreativeModeTab(MOD_ID + ".combat") {
+		public static final CreativeModeTab TAB_LON_ADDON_COMBAT = new CreativeModeTab(ITEM_GROUP_PREFIX + MOD_ID + ".combat") {
 
 			@Override
 			public ItemStack makeIcon() {
-				return new ItemStack(ItemInit.SCYTHONITE_PICKAXE.get()); // TODO change this to the sword
+				return new ItemStack(ItemInit.SCYTHONITE_SWORD.get());
 			}
 		};
 
-		public static final CreativeModeTab TAB_LON_ADDON_BLOCKS = new CreativeModeTab(MOD_ID + ".blocks") {
+		public static final CreativeModeTab TAB_LON_ADDON_BLOCKS = new CreativeModeTab(ITEM_GROUP_PREFIX + MOD_ID + ".blocks") {
 
 			@Override
 			public ItemStack makeIcon() {

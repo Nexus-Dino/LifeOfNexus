@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lifeofnexus:scythonite_pickaxe"
+      "lifeofnexus:osmium_ingot"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "lifeofnexus:scythonite_ingot"
+              "lifeofnexus:raw_osmium"
             ]
           }
         ]
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lifeofnexus:scythonite_pickaxe"
+        "recipe": "lifeofnexus:osmium_ingot"
       }
     }
   },

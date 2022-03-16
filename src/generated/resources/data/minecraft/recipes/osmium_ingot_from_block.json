@@ -1,12 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "osmium_ingot",
   "ingredients": [
     {
-      "item": "lifeofnexus:raw_osmium_block"
+      "item": "lifeofnexus:osmium_block"
     }
   ],
   "result": {
-    "item": "lifeofnexus:raw_osmium",
+    "item": "lifeofnexus:osmium_ingot",
     "count": 9
   }
 }
