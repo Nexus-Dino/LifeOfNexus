@@ -84,7 +84,9 @@ public class SkyLightLevelSource extends ChunkGenerator {
 
 	@Override
 	public Climate.Sampler climateSampler() {
-		return new Climate.Sampler(DensityFunctions.constant(1.69), null, null, null, null, null, Collections.emptyList());
+		return new Climate.Sampler(DensityFunctions.constant(1.69), DensityFunctions.constant(1.69),
+				DensityFunctions.constant(1.69), DensityFunctions.constant(1.69), DensityFunctions.constant(1.69),
+				DensityFunctions.constant(1.69), Collections.emptyList());
 	}
 
 	@Override

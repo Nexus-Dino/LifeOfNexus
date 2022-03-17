@@ -40,10 +40,15 @@ public class Lion extends Animal implements Enemy, IAnimatable {
 		return p_20245_ instanceof Lion;
 	}
 	
+	BlockPos getDenPos() {
+		return getEntityData().get(DEN_POS);
+	}
+	
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(DATA_HUNGRY_ID, false);
+		this.entityData.define(DEN_POS, BlockPos.ZERO);
 	}
 	
 	@Override
@@ -51,9 +56,14 @@ public class Lion extends Animal implements Enemy, IAnimatable {
 		p_27587_.put("DenPosition", NbtUtils.writeBlockPos(denPos));
 	}
 	
+	protected void setDenPos(BlockPos pos) {
+		getEntityData().set(DEN_POS, pos);
+	}
+	
 	@Override
 	public void readAdditionalSaveData(CompoundTag p_27576_) {
 		super.readAdditionalSaveData(p_27576_);
+		setDenPos(NbtUtils.readBlockPos(p_27576_));
 	}
 
 	@Override
